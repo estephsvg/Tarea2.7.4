@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+    
+    <!-- Definición del bean para el gestor de tareas Kanban -->
+    <bean id="gestorTareasKanban" class="com.app.ioc.GestorTareasKanban" />
+    
+    <!-- Definición del bean para el proyecto con inyección de dependencias -->
+    <bean id="proyecto" class="com.app.ioc.Proyecto">
+        <constructor-arg ref="gestorTareasKanban" />
+    </bean>
+
+    <!-- Definición del bean para el equipo de desarrollo con inyección de dependencias -->
+    <bean id="equipoDesarrollador" class="com.app.ioc.EquipoDesarrollador">
+        <constructor-arg ref="gestorTareasKanban" />
+    </bean>
+
+    <!-- Definición del bean para el sprint con inyección de dependencias -->
+    <bean id="sprint" class="com.app.ioc.Kanban">
+        <constructor-arg ref="gestorTareasKanban" />
+    </bean>
+</beans>
